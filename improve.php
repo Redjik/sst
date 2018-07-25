@@ -131,7 +131,7 @@ class CacheDataProviderDecorator implements Provider
         $cacheItem
             ->set($result)
             ->expiresAt(
-                (new DateTime())->modify('+1 day')
+                (new DateTime())->modify($this->cacheTime)
             );
 
         return $result;
