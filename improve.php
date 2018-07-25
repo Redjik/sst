@@ -112,7 +112,6 @@ class CacheDataProviderDecorator implements Provider
      */
     public function get(Request $request): Response
     {
-        //we need better way to get
         $cacheKey = $this->getCacheKey($request->jsonSerialize());
         try {
             $cacheItem = $this->cache->getItem($cacheKey);
@@ -142,7 +141,7 @@ class CacheDataProviderDecorator implements Provider
      * @param string $input
      * @return string
      */
-    public function getCacheKey(string $input)
+    protected function getCacheKey(string $input)
     {
         return md5($input);
     }
